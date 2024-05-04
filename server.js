@@ -10,9 +10,8 @@ app.use(express.urlencoded({extended: true})); // Parse application/x-www-form-u
 const database = new DatabaseMemory()
 
 app.get('/cards', (req, res) => {
-    const cards = database.list();
-
-    console.log(cards)
+    const search = req.query
+    const cards = database.list(search);
 
     return res.json(cards)
 })
